@@ -61,7 +61,7 @@ public class main {
     private static void accionMenu(int opcion, Scanner scanner) throws Exception {
         switch (opcion){
             case 1:
-                if (preguntarTipoEmpleado(scanner)){
+                if ((preguntarTipoEmpleado(scanner))) {
                     empleadoService.crearEmpleadoTiempoCompleto(scanner);
                 } else {
                     empleadoService.crearEmpleadoTiempoMedio(scanner);
@@ -87,6 +87,12 @@ public class main {
             case 7:
                 break;
             case 8:
+                System.out.println("¿Esta seguro que quiere borrar TODA la informacion? (S/N)");
+                if ((scanner.nextLine().toUpperCase().equals("S"))) {
+                    empleadoService.borrarTodaInformacion();
+                } else {
+                    System.out.println("No se borro la información.");
+                }
                 break;
             case 9:
                 System.out.println("Gracias por usar la aplicación.");

@@ -6,17 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
+import modelo.*;
 
 import static java.lang.Integer.parseInt;
-import com.aulamatriz.programer.clase.resumen.ejercicio.modelo.EnumTipoDocumento;
+
+
 
 public class EmpleadoService {
 
     //Listas
     @SuppressWarnings("final")
-    private HashMap<LlaveEmpleado,EmpleadoTiempoCompleto> empleadosTiempoCompleto = new HashMap<>();
+    private HashMap<LlaveEmpleado, EmpleadoTiempoCompleto> empleadosTiempoCompleto = new HashMap<>();
     @SuppressWarnings("final")
-    private HashMap<LlaveEmpleado,EmpleadoTiempoMedio> empleadosTiempoMedio = new HashMap<>();
+    private HashMap<LlaveEmpleado, EmpleadoTiempoMedio> empleadosTiempoMedio = new HashMap<>();
 
     //Metodos para la creacion de empleados
 
@@ -250,6 +252,17 @@ public class EmpleadoService {
         mostrarEmpleadoInfo(empleado);
     }
 
+    //Borrar toda la informacion de los empleados
+
+    public void borrarTodaInformacion()
+    {
+        Stream<LlaveEmpleado> empleadoTiempoCompletoStream = empleadosTiempoCompleto.keySet().stream();
+        empleadoTiempoCompletoStream.forEach(empleado ->empleadosTiempoCompleto.remove(empleado));
+
+        Stream<LlaveEmpleado> empleadoTiempoMedioStream = empleadosTiempoMedio.keySet().stream();
+        empleadoTiempoMedioStream.forEach(empleado ->empleadosTiempoMedio.remove(empleado));
+    }
+
     //Metodos para recibir datos
 
     /**
@@ -389,6 +402,6 @@ public class EmpleadoService {
     }
     public void mostrarTodoEmpleado(){
         mostrarTodoEmpleadoTiempoCompleto();
-        //mostrarTodoEmpleadoTiempoMedio();
+        mostrarTodoEmpleadoTiempoMedio();
     }
 }
