@@ -245,7 +245,7 @@ public class EmpleadoService {
         EmpleadoTiempoCompleto empleado = empleadosTiempoCompleto.get(tempLlave);
         System.out.println(empleado.getNombre());
 
-        if (empleado.equals(null))
+        if (empleado==null)
         {
             throw new Exception("No existe un empleado a tiempo completo de "+tipoDocumento+" "+documento);
         }
@@ -278,6 +278,7 @@ public class EmpleadoService {
         EnumTipoDocumento tempTipoDocumento = EnumTipoDocumento.valueOf(scanner.nextLine().toUpperCase());
         switch (tempTipoDocumento)
         {
+            //TODO: Ver utilities y ver como mandarle esto alla
             case CC:
                 resultado = "CC";
                 break;
@@ -312,6 +313,7 @@ public class EmpleadoService {
      */
     public void aniadirOcupacion(int codigo, String nombre, List<Ocupacion> lista) {
         lista.add(new Ocupacion(codigo,nombre));
+        //TODO: repartir a ocupacionService
     }
 
     //Otros
